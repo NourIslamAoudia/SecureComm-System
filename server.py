@@ -2,6 +2,8 @@ import socket
 import json
 import base64
 import logging
+
+import rsa
 from crypto_utils import CryptoUtils
 
 # Configuration

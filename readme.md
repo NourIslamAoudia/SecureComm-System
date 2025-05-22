@@ -135,6 +135,20 @@ Le système implémente plusieurs mécanismes de sécurité :
 - **Intégrité** : Mode EAX d'AES garantit l'authenticité des données
 - **Protection MITM** : Détection des signatures invalides
 
+### 🔄 Diagramme de séquence
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Serveur
+    
+    Client->>Serveur: 1. Génère une clé AES aléatoire
+    Client->>Serveur: 2. Chiffre la clé AES avec RSA (serveur_pub)
+    Client->>Serveur: 3. Signe le message avec sa clé privée
+    Serveur->>Client: 4. Déchiffre la clé AES avec RSA (serveur_priv)
+    Serveur->>Client: 5. Vérifie la signature avec client_pub
+```
+
 ## ⚡ Personnalisation
 
 Vous pouvez modifier les paramètres dans les fichiers :
