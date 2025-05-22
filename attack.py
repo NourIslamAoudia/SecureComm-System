@@ -8,7 +8,7 @@ import rsa
 from crypto_utils import CryptoUtils
 
 # Configuration
-SERVER_HOST = "192.168.100.5"
+SERVER_HOST = "172.20.10.2"
 SERVER_PORT = 9999
 BUFFER_SIZE = 4096
 

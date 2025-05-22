@@ -8,7 +8,7 @@ import rsa
 from crypto_utils import CryptoUtils
 
 # Configuration
-SERVER_HOST = "192.168.100.5"
+SERVER_HOST = "172.20.10.2"
 SERVER_PORT = 9999
 BUFFER_SIZE = 4096
 
@@ -48,13 +48,14 @@ class SecureClient:
             logger.info(f"Envoi du message sécurisé: {message}")
             
             # Conversion du message en bytes
-            message_bytes = message.encode('utf-8')
+            message_bytes = message.encode('utf-8')# utf-8 est la norme pour les chaînes de caractères
             
             # Signature du message
             signed_message = CryptoUtils.create_signed_message(message_bytes, self.client_private_key)
             
             # Chiffrement AES
             aes_data = CryptoUtils.encrypt_with_aes(signed_message)
+            
             
             # Chiffrement de la clé AES avec RSA
             encrypted_aes_key = rsa.encrypt(aes_data['aes_key'], self.server_public_key)
